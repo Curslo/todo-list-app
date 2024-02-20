@@ -19,24 +19,27 @@ function addTask() {
   saveTask();
 }
 // Function to Check tasks from the list and delete task from the list
-listContainer.addEventListener("click", function(e) {
-    if(e.target.tagName === "LI") {
-        e.target.classList.toggle("checked");
-        saveTask();
-
-    } else  if(e.target.tagName === "SPAN") {
-        e.target.parentElement.remove()
-        saveTask();
+listContainer.addEventListener(
+  "click",
+  function (e) {
+    if (e.target.tagName === "LI") {
+      e.target.classList.toggle("checked");
+      saveTask();
+    } else if (e.target.tagName === "SPAN") {
+      e.target.parentElement.remove();
+      saveTask();
     }
-}, false); 
+  },
+  false
+);
 
 // Fuction to save data even after the web browser has been refreshed.
 function saveTask() {
-    localStorage.setItem('tasks', listContainer.innerHTML);
+  localStorage.setItem("tasks", listContainer.innerHTML);
 }
 
 //Function to display data when website reloads again
 function showTask() {
-    listContainer.innerHTML = localStorage.getItem('tasks')
+  listContainer.innerHTML = localStorage.getItem("tasks");
 }
 showTask();
